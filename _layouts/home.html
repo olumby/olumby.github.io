@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  {% include head.html %}
+  <body>
+    <header class="site-header">
+        <h1 class="site-title home-page"><a href="/">{{ site.title }}</a></h1>
+       
+        {{ site.about }}
+    </header>
+
+    <div class="wrapper">
+      {{ content }}
+    </div>
+  </body>
+</html>
