@@ -8,10 +8,7 @@ category: os x
 
 ```bash
 # Set hostname
-sudo scutil --set HostName oliver-mba
-
-# Disable window animations
-defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
+sudo scutil --set HostName oliver-mb
 
 # Enable repeat on keydown
 defaults write -g ApplePressAndHoldEnabled -bool false
@@ -28,17 +25,17 @@ defaults write com.apple.finder ShowPathbar -bool true
 # Show Status bar in Finder
 defaults write com.apple.finder ShowStatusBar -bool true
 
+# Show absolute path in finder's title bar. 
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
+
+# Show the ~/Library folder
+chflags nohidden ~/Library
+
 # Enable AirDrop over Ethernet and on unsupported Macs
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 
-# Set a blazingly fast keyboard repeat rate
-defaults write NSGlobalDomain KeyRepeat -int 0
-
 # Avoid creating .DS_Store files on network volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-
-# Set a shorter Delay until key repeat
-defaults write NSGlobalDomain InitialKeyRepeat -int 12
 
 # Disable disk image verification
 defaults write com.apple.frameworks.diskimages skip-verify -bool true &&
@@ -51,20 +48,14 @@ defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
 # Enable Safari’s debug menu
 defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
 
-# Disable smart quotes as it’s annoying for messages that contain code
-defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool false
-
 # Enable the Develop menu and the Web Inspector in Safari
 defaults write com.apple.Safari IncludeDevelopMenu -bool true &&
 defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true &&
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true &&
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
-# Show the ~/Library folder
-chflags nohidden ~/Library
-
-# Show absolute path in finder's title bar. 
-defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
+# Disable Smart Quotes
+defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool false
 ```
 
 ### AppStore
@@ -80,29 +71,25 @@ defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
 
 ### Other Apps
 
-* CleanMyMac 2
 * Dropbox
 * Google Chrome
-* PHPStorm
 * Sequel Pro
-* Sidestep
 * Skype
 * Spectable
-* Sublime Text 3
+* Sublime Text
 * Transmission
 * Vagrant
 * Virtual Box
 * VLC Player
-* Bartender
-* SelfControl
 * Handbreak
 * Sketch
 * Mailbox
-* Zeplin
 * LICEcap
+* Little Snitch
+
+### Disable autosave in Sketch
 
 ```bash
-# Disable autosave in Sketch
 defaults write com.bohemiancoding.sketch3 ApplePersistence -bool no
 ``` 
 
@@ -119,7 +106,7 @@ brew install ssh-copy-id wget node jpegoptim pngcrush colordiff imagemagick icou
 ### Dev
 
 ```bash
-# SSH Key
+# Generate SSH Key
 ssh-keygen -t rsa -C "me@oliverlumby.com"
 ```
 
@@ -142,27 +129,7 @@ brew install composer
 composer global require "laravel/homestead=~2.0"
 ```
 
-```bash
-# Inside ~/.bash_profile
-alias homestead=~/.composer/vendor/bin/homestead
-alias ll="ls -lah"
-alias c="clear"
-alias art="php artisan"
-
-export PATH="/usr/local/bin:$PATH"
-```
-
-```bash
-# Source it
-source ~/.bash_profile
-```
-
-```bash
-# Cocoapods
-sudo gem install cocoapods
-```
-
-### Homestead
+### In Homestead
 
 ```bash
 # Mailcatcher
@@ -170,101 +137,75 @@ gem install mailcatcher
 mailcatcher --http-ip 192.168.10.10
 ```
 
-### Screenshots
-
-* Automator Service "no input" in "any application"
-* Run shell script:
-
-```sh
-#!/bin/bash
-
-DATE=$(date +"%Y-%m-%d");
-TIME=$(date +"%H.%M.%S");
-
-FILENAME=Screen\ Shot\ $DATE\ at\ $TIME.png;
-
-DB_USER_ID=18301138
-
-DB_BASE_DIR=~/Dropbox/Public/Shots;
-DB_BASE_URL=https://dl.dropboxusercontent.com/u;
-
-screencapture -i "$DB_BASE_DIR/$FILENAME";
-
-# user may have escaped out of the screencapture
-if [ -f "$DB_BASE_DIR/$FILENAME" ];
-then
-    URL_FILENAME=$(python -c "import urllib; print urllib.quote('''$FILENAME''')");
-    URL_LONG="$DB_BASE_URL/$DB_USER_ID/Shots/$URL_FILENAME";
-    # copy long url, if you paste before the shortener returns
-    echo $URL_LONG | pbcopy;
-
-    # shorten url via google
-    URL_SHORT=$(curl https://www.googleapis.com/urlshortener/v1/url -H 'Content-Type: application/json' -d "{\"longUrl\": \"$URL_LONG\"}" 2>/dev/null | grep goo.gl | cut -f 4 -d '"');
-
-    if [ -n "$URL_SHORT" ]; then
-        # we have a short url, copy it
-        echo $URL_SHORT | pbcopy;
-    fi
-fi
+```bash
+# ~/.bash_profile
+alias pa="php artisan"
+alias vssh="ssh vagrant@127.0.0.1 -p 2222"
+alias vup="(cd ~/Virtual/Homestead/ && vagrant up)"
+alias vhalt="(cd ~/Virtual/Homestead/ && vagrant halt)"
+alias vm="vup && vssh"
+export PATH="/usr/local/sbin:$PATH"
 ```
 
-### Sublime Text 3
+```bash
+# Install Cocoapods
+gem install cocoapods
+```
 
-```JSON
+### Sublime Text
+
+```json
 {
     "bold_folder_labels": true,
-    "caret_style": "phase",
-    "close_windows_when_empty": true,
-    "color_scheme": "Packages/User/SublimeLinter/base16-ocean.dark (SL).tmTheme",
+    "color_scheme": "Packages/Base16 Color Schemes/base16-ocean.dark.tmTheme",
     "draw_white_space": "all",
     "ensure_newline_at_eof_on_save": true,
     "findreplace_small": true,
-    "font_face": "Source Code Pro",
-    "font_size": 13.0,
-    "highlight_modified_tabs": true,
+    "font_face": "Hack",
+    "font_options":
+    [
+        "gray_antialias"
+    ],
+    "font_size": 12.0,
+    "gutter": true,
+    "highlight_modified_tabs": false,
     "ignored_packages":
     [
-        "Vintage"
     ],
+    "line_numbers": true,
     "line_padding_bottom": 4,
     "line_padding_top": 4,
-    "shift_tab_unindent": true,
-    "show_encoding": true,
-    "show_full_path": true,
-    "show_tab_close_buttons": true,
-    "spell_check": true,
-    "sublimelinter": true,
-    "sublimelinter_mark_style": "fill",
-    "tab_size": 4,
-    "tabs_medium": true,
-    "theme": "Spacegray.sublime-theme",
-    "translate_tabs_to_spaces": true,
-    "word_wrap": false
+    "material_theme_accent_red": true,
+    "material_theme_disable_folder_animation": true,
+    "material_theme_disable_tree_indicator": true,
+    "material_theme_small_tab": true,
+    "overlay_scroll_bars": "enabled",
+    "show_panel_on_build": false,
+    "theme": "Material-Theme.sublime-theme"
 }
 ```
 
-```JSON
+```json
 {
+    "bootstrapped": true,
     "in_process_packages":
     [
     ],
     "installed_packages":
     [
+        "AdvancedNewFile",
+        "Base16 Color Schemes",
         "Color Highlighter",
-        "DocBlockr",
-        "Git",
-        "Glue",
+        "Fix Mac Path",
         "LESS",
-        "Markdown Preview",
+        "Material Theme",
+        "Origami",
         "Package Control",
+        "PackageResourceViewer",
         "PHP Companion",
-        "SQF Language",
-        "sublime-github",
-        "SublimeLinter",
-        "Swift",
-        "Theme - Phoenix",
-        "Theme - Spacegray",
-        "Tomorrow Color Schemes"
+        "PHP Getters and Setters",
+        "SCSS",
+        "Swift"
     ]
 }
 ```
