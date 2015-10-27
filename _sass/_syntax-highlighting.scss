@@ -97,7 +97,7 @@
         &[data-lang=swift]:before {
             content: "Swift";
         }
-        &[data-lang=javascript]:before {
+        &[data-lang=js]:before {
             content: "JS";
         }
         &[data-lang=html]:before {
@@ -105,6 +105,9 @@
         }
         &[data-lang=css]:before {
             content: "CSS";
+        }
+        &[data-lang=json]:before {
+            content: "JSON";
         }
     }
 }
