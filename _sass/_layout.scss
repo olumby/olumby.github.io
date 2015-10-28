@@ -1,4 +1,7 @@
 /* Basic styling */
+* {
+    box-sizing: border-box;
+}
 
 body {
     font-family: $base-font-family;
@@ -9,8 +12,6 @@ body {
     background-color: $background-color;
     -webkit-text-size-adjust: 100%;
 }
-
-strong { font-weight: 400; }
 
 figure > img { display: block; }
 figcaption { font-size: $small-font-size; }
@@ -169,6 +170,42 @@ pre {
             font-style: italic;
             border-bottom: 1px dashed rgba($brand-color, 0.3);
             padding-bottom:2px;
+        }
+    }
+    .post-content {
+        table img {
+            width: 100%;
+        }
+        p img {
+            display: block;
+            max-width: 95%;
+            margin: 10px auto;
+            padding: 15px;
+            background: #f8f8f8;
+            border-radius: 3px;
+        }
+    }
+}
+
+/* Instructions */
+.post {
+    .step {
+        border: 1px solid rgba($brand-color, 0.1);
+        padding: 10px;
+        margin: 10px 0;
+        display: flex;
+        flex-direction: row;
+        .instruction {
+            width: 40%;
+            padding: 10px 20px;
+        }
+        .image {
+            border: 1px solid rgba($brand-color, 0.1);
+            width: 60%;
+            img {
+                max-width: 100%;
+                display: block;
+            }
         }
     }
 }
