@@ -103,6 +103,12 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 brew install ssh-copy-id wget node jpegoptim pngcrush colordiff imagemagick icoutils ack git
 ```
 
+```bash
+brew install caskroom/cask/brew-cask
+brew cask install qlcolorcode  qlstephen qlmarkdown quicklook-json quicklook-csv 
+```
+
+
 ### Dev
 
 ```bash
