@@ -208,6 +208,14 @@ pre {
             }
         }
     }
+    @include media-query($on-phone) {
+        .step {
+            flex-direction: column;
+            .image, .instruction {
+                width: 100%;
+            }
+        }
+    }
 }
 
 
