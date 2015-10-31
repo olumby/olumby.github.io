@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Defender Seat Removal"
-category: cars
+published: false
 ---
 
 How to remove the third row of seats from a modern Land Rover Defender 110. The procedure is the same for both the left and right hand seats. The steps can be followed in reverse order to reinstall the seats.

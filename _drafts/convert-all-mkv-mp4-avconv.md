@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Convert all MKVs in a folder to MP4"
-category: os x
+published: false
 ---
 
 ```bash 

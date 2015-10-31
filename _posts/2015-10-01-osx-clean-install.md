@@ -3,7 +3,7 @@ layout: post
 title: "OS X Clean Install (10.11)"
 date: 2015-10-01 10:30:00
 updated: 2015-10-31 00:57:00
-category: os x
+published: true
 ---
 ### OS X Preferences
 

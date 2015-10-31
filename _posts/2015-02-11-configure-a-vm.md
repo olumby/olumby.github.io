@@ -2,7 +2,7 @@
 layout: post
 title: "Set up a VM"
 date: 2015-02-11 09:21:00
-category: hidden
+published: false
 ---
 # Setting up a VM
 
