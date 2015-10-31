@@ -1,9 +1,21 @@
 ---
 layout: post
-title: "Set up a VM"
-date: 2015-02-11 09:21:00
-published: false
+title: Set up a VM
+date: 2015-02-11T09:21:00.000Z
+published: true
+categories: 
+  - vm
+  - os x
+  - laravel
+tags: 
+  - vm
+  - os x
+  - virtual
+  - server
+  - homestead
+  - larval
 ---
+
 # Setting up a VM
 
 Three important things, 
