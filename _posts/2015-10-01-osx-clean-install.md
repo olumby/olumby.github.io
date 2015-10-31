@@ -1,8 +1,8 @@
 ---
 layout: post
 title: OS X Clean Install (10.11)
-date: {}
-updated: {}
+date: 2015-10-01T10:30:00.000Z
+updated: 2015-10-31T00:57:00.000Z
 published: true
 categories: 
   - os x
