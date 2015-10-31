@@ -1,10 +1,20 @@
 ---
 layout: post
-title: "OS X Clean Install (10.11)"
-date: 2015-10-01 10:30:00
-updated: 2015-10-31 00:57:00
+title: OS X Clean Install (10.11)
+date: {}
+updated: {}
 published: true
+categories: 
+  - os x
+  - developer
+tags: 
+  - install
+  - os x
+  - developer
+  - "el capitan "
+  - mac
 ---
+
 ### OS X Preferences
 
 ```bash
